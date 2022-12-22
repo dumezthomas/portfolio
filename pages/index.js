@@ -1,7 +1,7 @@
 import React from "react";
 import Typed from "react-typed";
 
-import BaseLayout from "../components/layouts/BaseLayout";
+import BaseLayout from "@/components/layouts/BaseLayout";
 import { Container, Row, Col } from "reactstrap";
 
 const TypedText = () => {

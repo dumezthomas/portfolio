@@ -22,6 +22,7 @@
     color: white;
     font-weight: bold;
     margin-bottom: 10px;
+    font-size: 32px;
   }
 
   perspective: 1000px;
@@ -78,8 +79,16 @@
   .hero-section {
     width: 341px;
 
+    h2 {
+      font-size: 27px;
+    }
+
     &-content {
       width: 341px;
+
+      &-intro {
+        font-size: 14px;
+      }
     }
   }
 
