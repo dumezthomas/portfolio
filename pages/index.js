@@ -1,6 +1,8 @@
 import React from "react";
 import Typed from "react-typed";
 
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 import BaseLayout from "@/components/layouts/BaseLayout";
 import { Container, Row, Col } from "reactstrap";
 
@@ -31,8 +33,10 @@ const TypedText = () => {
 };
 
 const Home = () => {
+  const { user, isLoading: userLoading } = useUser();
+
   return (
-    <BaseLayout className="cover">
+    <BaseLayout user={user} userLoading={userLoading} className="cover">
       <div className="main-section">
         <div className="background-image">
           <img src="/images/background-index.png" />
@@ -61,7 +65,7 @@ const Home = () => {
             <Col md="6" className="hero-welcome-wrapper">
               <div className="hero-welcome-text">
                 <h1>
-                  Welcome my portfolio. Get informed, collaborate and discover projects I was
+                  Welcome to my portfolio. Get informed, collaborate and discover projects I was
                   working on through the years!
                 </h1>
               </div>

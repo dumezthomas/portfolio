@@ -1,17 +1,19 @@
 import React from "react";
 
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 import BaseLayout from "@/components/layouts/BaseLayout";
 import BasePage from "@/components/BasePage";
 
 const Resume = () => {
+  const { user, isLoading: userLoading } = useUser();
+
   return (
-    <>
-      <BaseLayout>
-        <BasePage>
-          <h1>Resume</h1>
-        </BasePage>
-      </BaseLayout>
-    </>
+    <BaseLayout user={user} userLoading={userLoading}>
+      <BasePage>
+        <h1>Resume</h1>
+      </BasePage>
+    </BaseLayout>
   );
 };
 

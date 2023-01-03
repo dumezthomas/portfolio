@@ -1,12 +1,14 @@
 import React from "react";
-import { useRouter } from "next/router";
 
+import { useRouter } from "next/router";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { useGetPostById } from "@/actions/index";
 
 import BaseLayout from "@/components/layouts/BaseLayout";
 import BasePage from "@/components/BasePage";
 
 const PortfolioDetail = ({ portfolioItem }) => {
+  const { user, isLoading: userLoading } = useUser();
   const router = useRouter();
   const { id } = router.query;
   const { data, error, isLoading } = useGetPostById(id);
@@ -22,7 +24,7 @@ const PortfolioDetail = ({ portfolioItem }) => {
   };
 
   return (
-    <BaseLayout>
+    <BaseLayout user={user} userLoading={userLoading}>
       <BasePage>
         {data && renderPortfolioItem(data)}
         {error && <div className="alert alert-danger">{error.message}</div>}

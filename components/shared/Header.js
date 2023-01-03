@@ -17,11 +17,15 @@ const NavLinkItem = ({ href, value }) => (
   </NavItem>
 );
 
-const NavLinkLogin = () => <span className="nav-link port-navbar-link clickable">Login</span>;
+const NavAnchorItem = ({ href, value }) => (
+  <NavItem className="port-navbar-item">
+    <a href={href} className="nav-link port-navbar-link">
+      {value}
+    </a>
+  </NavItem>
+);
 
-const NavLinkLogout = () => <span className="nav-link port-navbar-link clickable">Logout</span>;
-
-const Header = () => {
+const Header = ({ user, userLoading }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -35,15 +39,16 @@ const Header = () => {
             <NavLinkItem href="/" value="Home" />
             <NavLinkItem href="/about" value="About" />
             <NavLinkItem href="/portfolio" value="Portfolio" />
+            <NavLinkItem href="/blogs" value="Blogs" />
             <NavLinkItem href="/resume" value="Resume" />
           </Nav>
           <Nav navbar>
-            <NavItem className="port-navbar-item">
-              <NavLinkLogin />
-            </NavItem>
-            <NavItem className="port-navbar-item">
-              <NavLinkLogout />
-            </NavItem>
+            {!userLoading &&
+              (user ? (
+                <NavAnchorItem href="/api/auth/logout" value="Logout" />
+              ) : (
+                <NavAnchorItem href="/api/auth/login" value="Login" />
+              ))}
           </Nav>
         </Collapse>
       </Navbar>

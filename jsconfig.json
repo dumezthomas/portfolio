@@ -10,8 +10,10 @@
     "paths": {
       "@/actions/*": ["actions/*"],
       "@/components/*": ["components/*"],
+      "@/hoc/*": ["hoc/*"],
       "@/pages/*": ["pages/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
   "exclude": ["node_modules", "**/node_modules/*"]

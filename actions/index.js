@@ -12,6 +12,6 @@ const fetcher = (url) =>
     }
   });
 
-export const useGetPosts = () => useSWR("/api/v1/posts", fetcher);
+export const useGetPosts = () => useSWR("/api/posts", fetcher);
 
-export const useGetPostById = (id) => useSWR(id ? `/api/v1/posts/${id}` : null, fetcher);
+export const useGetPostById = (id) => useSWR(id ? `/api/posts/${id}` : null, fetcher);
