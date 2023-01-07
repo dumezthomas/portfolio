@@ -1,9 +1,9 @@
 import React from "react";
-import Typed from "react-typed";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 import BaseLayout from "@/components/layouts/BaseLayout";
+import Typed from "@/components/shared/Typed";
 import { Container, Row, Col } from "reactstrap";
 
 const TypedText = () => {
