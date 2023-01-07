@@ -1,9 +1,9 @@
-.portfolio-page {
+.projects-page {
   min-height: 100vh;
   padding: 150px 0 0;
   // background-color: white;
 
-  .portfolio-card {
+  .project-card {
     background-image: linear-gradient(45deg, #4e54c8 0%, #8f94fb 100%);
     border: none;
     color: white;
@@ -44,7 +44,7 @@
     }
   }
 
-  .create-port-btn {
+  .create-project-btn {
     margin-bottom: 20px;
   }
 }

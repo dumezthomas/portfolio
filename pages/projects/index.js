@@ -2,30 +2,30 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
-import PortfolioApi from "@/lib/api/portfolio";
+import ProjectApi from "@/lib/api/project";
 
 import BaseLayout from "@/components/layouts/BaseLayout";
 import BasePage from "@/components/BasePage";
-import PortfolioCard from "@/components/PortfolioCard";
+import ProjectCard from "@/components/ProjectCard";
 import { Row, Col } from "reactstrap";
 
-const Portfolio = ({ portfolio }) => {
+const Projects = ({ projects }) => {
   const { user, isLoading: userLoading } = useUser();
   const router = useRouter();
 
   return (
     <BaseLayout user={user} userLoading={userLoading}>
-      <BasePage header="Portfolio" className="portfolio-page">
+      <BasePage header="Projects" className="projects-page">
         <Row>
-          {portfolio.map((portfolioItem) => (
+          {projects.map((project) => (
             <Col
-              key={portfolioItem._id}
+              key={project._id}
               onClick={() => {
-                router.push(`/portfolio/[id]`, `/portfolio/${portfolioItem._id}`);
+                router.push(`/projects/[id]`, `/projects/${project._id}`);
               }}
               md="4"
             >
-              <PortfolioCard portfolio={portfolioItem} />
+              <ProjectCard project={project} />
             </Col>
           ))}
         </Row>
@@ -35,12 +35,12 @@ const Portfolio = ({ portfolio }) => {
 };
 
 export const getStaticProps = async () => {
-  const json = await new PortfolioApi().getAll();
-  const portfolio = json.data;
+  const json = await new ProjectApi().getAll();
+  const projects = json.data;
 
   return {
-    props: { portfolio },
+    props: { projects },
   };
 };
 
-export default Portfolio;
+export default Projects;

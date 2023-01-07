@@ -4,16 +4,20 @@ import withAuth from "@/hoc/withAuth";
 
 import BaseLayout from "@/components/layouts/BaseLayout";
 import BasePage from "@/components/BasePage";
-import PortfolioForm from "@/components/PortfolioForm";
+import ProjectForm from "@/components/ProjectForm";
 import { Row, Col } from "reactstrap";
 
-const PortfolioNew = ({ user, userLoading }) => {
+const ProjectNew = ({ user, userLoading }) => {
+  const createProject = (data) => {
+    alert(JSON.stringify(data));
+  };
+
   return (
     <BaseLayout user={user} userLoading={userLoading}>
-      <BasePage header="Create Portfolio">
+      <BasePage header="Create Project">
         <Row>
           <Col md="8">
-            <PortfolioForm />
+            <ProjectForm onSubmit={createProject} />
           </Col>
         </Row>
       </BasePage>
@@ -21,4 +25,4 @@ const PortfolioNew = ({ user, userLoading }) => {
   );
 };
 
-export default withAuth(PortfolioNew)("admin");
+export default withAuth(ProjectNew)("admin");

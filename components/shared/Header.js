@@ -38,7 +38,7 @@ const Header = ({ navBarBg, user, userLoading }) => {
           <Nav className="me-auto" navbar>
             <NavLinkItem href="/" value="Home" />
             <NavLinkItem href="/about" value="About" />
-            <NavLinkItem href="/portfolio" value="Portfolio" />
+            <NavLinkItem href="/projects" value="Projects" />
             <NavLinkItem href="/blogs" value="Blogs" />
             <NavLinkItem href="/resume" value="Resume" />
           </Nav>
