@@ -10,9 +10,7 @@ const Blogs = () => {
 
   return (
     <BaseLayout user={user} userLoading={userLoading}>
-      <BasePage>
-        <h1>Blogs</h1>
-      </BasePage>
+      <BasePage header="Blogs"></BasePage>
     </BaseLayout>
   );
 };

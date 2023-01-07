@@ -5,6 +5,7 @@
 
 // Pages
 @import "@/styles/index";
+@import "@/styles/portfolio";
 
 .absolute {
   position: absolute;
@@ -22,6 +23,14 @@ body {
 }
 
 .base-page {
-  padding-top: 150px;
-  color: white;
+  padding: 150px 0 50px 0;
+  color: black;
+  background-color: #ecedee;
+  min-height: 100vh;
+
+  .page-header-title {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
 }

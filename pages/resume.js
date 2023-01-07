@@ -10,9 +10,7 @@ const Resume = () => {
 
   return (
     <BaseLayout user={user} userLoading={userLoading}>
-      <BasePage>
-        <h1>Resume</h1>
-      </BasePage>
+      <BasePage header="Resume"></BasePage>
     </BaseLayout>
   );
 };

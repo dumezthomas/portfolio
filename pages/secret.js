@@ -1,6 +1,7 @@
 import React from "react";
 
 import withAuth from "@/hoc/withAuth";
+
 import BaseLayout from "@/components/layouts/BaseLayout";
 import BasePage from "@/components/BasePage";
 

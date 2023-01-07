@@ -11,6 +11,7 @@
       "@/actions/*": ["actions/*"],
       "@/components/*": ["components/*"],
       "@/hoc/*": ["hoc/*"],
+      "@/lib/*": ["lib/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"],
       "@/utils/*": ["utils/*"]

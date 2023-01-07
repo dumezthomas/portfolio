@@ -36,7 +36,7 @@ const Home = () => {
   const { user, isLoading: userLoading } = useUser();
 
   return (
-    <BaseLayout user={user} userLoading={userLoading} className="cover">
+    <BaseLayout user={user} userLoading={userLoading} navBarBg="transparent" className="cover">
       <div className="main-section">
         <div className="background-image">
           <img src="/images/background-index.png" />

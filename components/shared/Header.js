@@ -25,13 +25,13 @@ const NavAnchorItem = ({ href, value }) => (
   </NavItem>
 );
 
-const Header = ({ user, userLoading }) => {
+const Header = ({ navBarBg, user, userLoading }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
+      <Navbar className={`port-navbar port-default absolute ${navBarBg}`} dark expand="md">
         <NavBarBrand href="/">Dumez Thomas</NavBarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

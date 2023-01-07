@@ -11,7 +11,3 @@ const fetcher = (url) =>
       return Promise.reject(error);
     }
   });
-
-export const useGetPosts = () => useSWR("/api/posts", fetcher);
-
-export const useGetPostById = (id) => useSWR(id ? `/api/posts/${id}` : null, fetcher);
