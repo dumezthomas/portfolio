@@ -39,4 +39,30 @@
       }
     }
   }
+
+  .port-dropdown-menu {
+    .dropdown-item {
+      &:active {
+        background-color: #ecedee;
+      }
+
+      &:hover {
+        background-color: #ecedee;
+      }
+    }
+
+    .port-dropdown-item {
+      color: #2c3e50;
+
+      &:active {
+        color: #dba919;
+      }
+    }
+
+    .port-dropdown-toggle {
+      color: white;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
 }

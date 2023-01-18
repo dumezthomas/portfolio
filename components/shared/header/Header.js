@@ -1,29 +1,12 @@
 import React, { useState } from "react";
-import Link from "next/link";
 
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
+import isAuthorized from "@/utils/isAuthorized";
 
-const NavBarBrand = ({ href, children }) => (
-  <Link href={href} className="navbar-brand port-navbar-brand">
-    {children}
-  </Link>
-);
-
-const NavLinkItem = ({ href, value }) => (
-  <NavItem className="port-navbar-item">
-    <Link href={href} className="nav-link port-navbar-link">
-      {value}
-    </Link>
-  </NavItem>
-);
-
-const NavAnchorItem = ({ href, value }) => (
-  <NavItem className="port-navbar-item">
-    <a href={href} className="nav-link port-navbar-link">
-      {value}
-    </a>
-  </NavItem>
-);
+import NavBarBrand from "@/components/shared/header/NavBarBrand";
+import NavLinkItem from "@/components/shared/header/NavLinkItem";
+import NavAnchorItem from "@/components/shared/header/NavAnchorItem";
+import ProjectsMenu from "@/components/shared/header/ProjectsMenu";
+import { Collapse, Navbar, NavbarToggler, Nav } from "reactstrap";
 
 const Header = ({ navBarBg, user, userLoading }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +21,12 @@ const Header = ({ navBarBg, user, userLoading }) => {
           <Nav className="me-auto" navbar>
             <NavLinkItem href="/" value="Home" />
             <NavLinkItem href="/about" value="About" />
-            <NavLinkItem href="/projects" value="Projects" />
+            {!userLoading &&
+              (isAuthorized(user, "admin") ? (
+                <ProjectsMenu />
+              ) : (
+                <NavLinkItem href="/projects" value="Projects" />
+              ))}
             <NavLinkItem href="/resume" value="Resume" />
           </Nav>
           <Nav navbar>

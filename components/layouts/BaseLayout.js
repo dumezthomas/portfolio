@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ToastContainer } from "react-toastify";
-import Header from "@/components/shared/Header";
+import Header from "@/components/shared/header/Header";
 
 const BaseLayout = ({ className, navBarBg = "with-bg", user, userLoading, children }) => {
   return (
