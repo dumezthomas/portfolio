@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 
 import { Form, FormGroup, Label, Button } from "reactstrap";
 
-const ProjectForm = ({ onSubmit }) => {
-  const { register, handleSubmit } = useForm();
+const ProjectForm = ({ initialData = {}, onSubmit }) => {
+  const { register, handleSubmit } = useForm({ defaultValues: initialData });
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormGroup>
@@ -38,7 +38,7 @@ const ProjectForm = ({ onSubmit }) => {
       </FormGroup>
 
       <Button type="submit" color="primary">
-        Create
+        {JSON.stringify(initialData) === "{}" ? "Create" : "Update"}
       </Button>
     </Form>
   );

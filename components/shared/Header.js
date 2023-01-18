@@ -39,7 +39,6 @@ const Header = ({ navBarBg, user, userLoading }) => {
             <NavLinkItem href="/" value="Home" />
             <NavLinkItem href="/about" value="About" />
             <NavLinkItem href="/projects" value="Projects" />
-            <NavLinkItem href="/blogs" value="Blogs" />
             <NavLinkItem href="/resume" value="Resume" />
           </Nav>
           <Nav navbar>
