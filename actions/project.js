@@ -1,7 +1,7 @@
 import axios from "axios";
 import useSWR from "swr";
 
-import { useApiHandler, fetcher } from "@/actions/index";
+import { useApiHandler, fetcher } from "actions/index";
 
 export const useGetProjectById = (id) => useSWR(id ? `/api/projects/${id}` : null, fetcher);
 

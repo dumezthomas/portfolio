@@ -1,6 +1,6 @@
 import { getSession } from "@auth0/nextjs-auth0";
 
-import isAuthorized from "@/utils/isAuthorized";
+import isAuthorized from "utils/isAuthorized";
 
 const withAuth =
   (getData) =>

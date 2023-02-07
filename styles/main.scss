@@ -1,11 +1,14 @@
-@import "@/styles/shared/fonts";
+// Shared
+@import "styles/shared/color";
 
 // Components
-@import "@/styles/components/header";
+@import "styles/components/header";
 
 // Pages
-@import "@/styles/index";
-@import "@/styles/project";
+@import "styles/index";
+@import "styles/project";
+@import "styles/projectDetails";
+@import "styles/about";
 
 .absolute {
   position: absolute;
@@ -24,8 +27,8 @@ body {
 
 .base-page {
   padding: 150px 0 50px 0;
-  color: black;
-  background-color: #ecedee;
+  color: $text-color-dark;
+  background-color: $background-color-light;
   min-height: 100vh;
 
   .page-header-title {

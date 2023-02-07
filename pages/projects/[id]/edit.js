@@ -1,14 +1,14 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-import withAuth from "@/hoc/withAuth";
-import { useGetProjectById, useUpdateProject } from "@/actions/project";
+import withAuth from "hoc/withAuth";
+import { useGetProjectById, useUpdateProject } from "actions/project";
 
 import { toast } from "react-toastify";
 
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import ProjectForm from "@/components/ProjectForm";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
+import ProjectForm from "components/ProjectForm";
 import { Row, Col } from "reactstrap";
 
 const ProjectEdit = ({ user, userLoading }) => {

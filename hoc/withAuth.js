@@ -1,8 +1,8 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-import isAuthorized from "@/utils/isAuthorized";
+import isAuthorized from "utils/isAuthorized";
 
-import Redirect from "@/components/shared/Redirect";
+import Redirect from "components/shared/Redirect";
 
 const withAuth = (Component) => (role) => {
   return (props) => {

@@ -1,12 +1,12 @@
 import React from "react";
 
-import withAuth from "@/hoc/withAuth";
-import { useCreateProject } from "@/actions/project";
+import withAuth from "hoc/withAuth";
+import { useCreateProject } from "actions/project";
 
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import ProjectForm from "@/components/ProjectForm";
-import Redirect from "@/components/shared/Redirect";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
+import ProjectForm from "components/ProjectForm";
+import Redirect from "components/shared/Redirect";
 import { Row, Col } from "reactstrap";
 
 const ProjectNew = ({ user, userLoading }) => {

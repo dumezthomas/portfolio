@@ -6,16 +6,7 @@
     "jsx": "react",
     "strictNullChecks": true,
     "strictFunctionTypes": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/actions/*": ["actions/*"],
-      "@/components/*": ["components/*"],
-      "@/hoc/*": ["hoc/*"],
-      "@/lib/*": ["lib/*"],
-      "@/pages/*": ["pages/*"],
-      "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"]
-    }
+    "baseUrl": "."
   },
   "exclude": ["node_modules", "**/node_modules/*"]
 }

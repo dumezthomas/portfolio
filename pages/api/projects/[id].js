@@ -1,5 +1,5 @@
-import ProjectApi from "@/lib/api/project";
 import { getSession } from "@auth0/nextjs-auth0";
+import ProjectApi from "lib/api/project";
 
 const handleProjectById = async (req, res) => {
   try {

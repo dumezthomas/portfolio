@@ -23,6 +23,11 @@ const ProjectForm = ({ initialData = {}, onSubmit }) => {
       </FormGroup>
 
       <FormGroup>
+        <Label for="github">GitHub</Label>
+        <input id="github" type="url" className="form-control" {...register("github")} />
+      </FormGroup>
+
+      <FormGroup>
         <Label for="technologies">Technologies</Label>
         <input
           id="technologies"

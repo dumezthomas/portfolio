@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { useDeleteProject } from "@/actions/project";
-import ProjectApi from "@/lib/api/project";
-import isAuthorized from "@/utils/isAuthorized";
+import { useDeleteProject } from "actions/project";
+import ProjectApi from "lib/api/project";
+import isAuthorized from "utils/isAuthorized";
 
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import ProjectCard from "@/components/ProjectCard";
+import BaseLayout from "components/layouts/BaseLayout";
+import BasePage from "components/BasePage";
+import ProjectCard from "components/ProjectCard";
 import { Row, Col, Button } from "reactstrap";
 
 const Projects = ({ projects: initialProjects }) => {
@@ -39,7 +39,7 @@ const Projects = ({ projects: initialProjects }) => {
 
   return (
     <BaseLayout user={user} userLoading={userLoading}>
-      <BasePage header="Projects" className="projects-page">
+      <BasePage header="Projects" className="projects-page" title="Projects | Thomas Dumez">
         <Row>
           {errorDeleteProject && <div className="alert alert-danger">{errorDeleteProject}</div>}
           {projects.map((project) => (
@@ -77,6 +77,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { projects },
+    revalidate: 1,
   };
 };
 

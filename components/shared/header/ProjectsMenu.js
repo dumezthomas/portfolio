@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import DropdownLinkItem from "@/components/shared/header/DropdownLinkItem";
+import DropdownLinkItem from "components/shared/header/DropdownLinkItem";
 import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 
 const ProjectsMenu = () => {

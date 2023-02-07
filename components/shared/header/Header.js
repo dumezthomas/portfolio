@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import ReactResizeDetector from "react-resize-detector";
 
-import isAuthorized from "@/utils/isAuthorized";
+import isAuthorized from "utils/isAuthorized";
 
-import NavBarBrand from "@/components/shared/header/NavBarBrand";
-import NavLinkItem from "@/components/shared/header/NavLinkItem";
-import NavAnchorItem from "@/components/shared/header/NavAnchorItem";
-import ProjectsMenu from "@/components/shared/header/ProjectsMenu";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
+
+import NavBarBrand from "components/shared/header/NavBarBrand";
+import ActiveNavLinkItem from "components/shared/header/ActiveNavLinkItem";
+import NavAnchorItem from "components/shared/header/NavAnchorItem";
+import ProjectsMenu from "components/shared/header/ProjectsMenu";
+import SocialMenu from "components/shared/header/SocialMenu";
 import { Collapse, Navbar, NavbarToggler, Nav } from "reactstrap";
 
 const Header = ({ navBarBg, user, userLoading }) => {
@@ -13,33 +18,42 @@ const Header = ({ navBarBg, user, userLoading }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar className={`port-navbar port-default absolute ${navBarBg}`} dark expand="md">
-        <NavBarBrand href="/">Dumez Thomas</NavBarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="me-auto" navbar>
-            <NavLinkItem href="/" value="Home" />
-            <NavLinkItem href="/about" value="About" />
-            {!userLoading &&
-              (isAuthorized(user, "admin") ? (
-                <ProjectsMenu />
-              ) : (
-                <NavLinkItem href="/projects" value="Projects" />
-              ))}
-            <NavLinkItem href="/resume" value="Resume" />
-          </Nav>
-          <Nav navbar>
-            {!userLoading &&
-              (user ? (
-                <NavAnchorItem href="/api/auth/logout" value="Logout" />
-              ) : (
-                <NavAnchorItem href="/api/auth/login" value="Login" />
-              ))}
-          </Nav>
-        </Collapse>
-      </Navbar>
-    </div>
+    <ReactResizeDetector handleWidth>
+      {({ width }) => (
+        <Navbar
+          className={`port-navbar port-default absolute ${navBarBg} ${
+            width < 992 - 2 * 30 && isOpen ? "is-open" : "is-close"
+          }`}
+          dark
+          expand="lg"
+        >
+          <NavBarBrand href="/">Thomas Dumez</NavBarBrand>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
+            <Nav navbar>
+              <ActiveNavLinkItem href="/" value="Home" />
+              <ActiveNavLinkItem href="/about" value="About" />
+              {!userLoading &&
+                (isAuthorized(user, "admin") ? (
+                  <ProjectsMenu />
+                ) : (
+                  <ActiveNavLinkItem href="/projects" value="Projects" />
+                ))}
+              <ActiveNavLinkItem href="/resume" value="Resume" />
+              {!userLoading && user && (
+                <NavAnchorItem
+                  href="/api/auth/logout"
+                  value={<FontAwesomeIcon icon={faSignOut} />}
+                />
+              )}
+            </Nav>
+            <Nav className="ms-auto" navbar>
+              <SocialMenu />
+            </Nav>
+          </Collapse>
+        </Navbar>
+      )}
+    </ReactResizeDetector>
   );
 };
 
