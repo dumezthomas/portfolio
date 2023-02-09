@@ -33,12 +33,11 @@ const Header = ({ navBarBg, user, userLoading }) => {
             <Nav navbar>
               <ActiveNavLinkItem href="/" value="Home" />
               <ActiveNavLinkItem href="/about" value="About" />
-              {!userLoading &&
-                (isAuthorized(user, "admin") ? (
-                  <ProjectsMenu />
-                ) : (
-                  <ActiveNavLinkItem href="/projects" value="Projects" />
-                ))}
+              {!userLoading && isAuthorized(user, "admin") ? (
+                <ProjectsMenu />
+              ) : (
+                <ActiveNavLinkItem href="/projects" value="Projects" />
+              )}
               <ActiveNavLinkItem href="/resume" value="Resume" />
               {!userLoading && user && (
                 <NavAnchorItem
