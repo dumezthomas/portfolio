@@ -18,20 +18,20 @@ const ProjectDetail = ({ project }) => {
         metaDescription={project.description}
       >
         <div className="project-details">
-          <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-            <main role="main" class="inner page-cover">
-              <p class="lead info mb-0">{project.technologies}</p>
-              <h1 class="cover-heading">{project.project}</h1>
-              <p class="lead dates">{project.client}</p>
-              <p class="lead">{project.description}</p>
-              <p class="lead">
+          <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+            <main role="main" className="inner page-cover">
+              <p className="lead info mb-0">{project.technologies}</p>
+              <h1 className="cover-heading">{project.project}</h1>
+              <p className="lead dates">{project.client}</p>
+              <p className="lead">{project.description}</p>
+              <p className="lead">
                 {project.website && (
-                  <a href={project.website} target="_blank" class="btn btn-lg btn-secondary">
+                  <a href={project.website} target="_blank" className="btn btn-lg btn-secondary">
                     Live
                   </a>
                 )}
                 {project.github && (
-                  <a href={project.github} target="_blank" class="btn btn-lg btn-secondary">
+                  <a href={project.github} target="_blank" className="btn btn-lg btn-secondary">
                     Code
                   </a>
                 )}
@@ -63,6 +63,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: { project },
+    revalidate: 10,
   };
 };
 
