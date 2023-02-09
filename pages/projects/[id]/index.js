@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ProjectApi from "lib/api/project";
@@ -8,34 +9,45 @@ import BasePage from "components/BasePage";
 
 const ProjectDetail = ({ project }) => {
   const { user, isLoading: userLoading } = useUser();
+  const router = useRouter();
 
   return (
     <BaseLayout user={user} userLoading={userLoading} navBarBg="transparent">
       <BasePage
         indexPage
         noWrapper
-        title={`${project.project} | Thomas Dumez`}
-        metaDescription={project.description}
+        title={`${project ? project.project : "Coming..."} | Thomas Dumez`}
+        metaDescription={project?.description}
       >
         <div className="project-details">
           <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
             <main role="main" className="inner page-cover">
-              <p className="lead info mb-0">{project.technologies}</p>
-              <h1 className="cover-heading">{project.project}</h1>
-              <p className="lead dates">{project.client}</p>
-              <p className="lead">{project.description}</p>
-              <p className="lead">
-                {project.website && (
-                  <a href={project.website} target="_blank" className="btn btn-lg btn-secondary">
-                    Live
-                  </a>
-                )}
-                {project.github && (
-                  <a href={project.github} target="_blank" className="btn btn-lg btn-secondary">
-                    Code
-                  </a>
-                )}
-              </p>
+              {router.isFallback ? (
+                <h1 className="cover-heading">Your page is getting created.</h1>
+              ) : (
+                <>
+                  <p className="lead info mb-0">{project.technologies}</p>
+                  <h1 className="cover-heading">{project.project}</h1>
+                  <p className="lead dates">{project.client}</p>
+                  <p className="lead">{project.description}</p>
+                  <p className="lead">
+                    {project.website && (
+                      <a
+                        href={project.website}
+                        target="_blank"
+                        className="btn btn-lg btn-secondary"
+                      >
+                        Live
+                      </a>
+                    )}
+                    {project.github && (
+                      <a href={project.github} target="_blank" className="btn btn-lg btn-secondary">
+                        Code
+                      </a>
+                    )}
+                  </p>
+                </>
+              )}
             </main>
           </div>
         </div>
