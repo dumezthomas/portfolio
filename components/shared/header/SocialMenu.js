@@ -8,7 +8,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const SocialMenu = () => {
   return (
     <div className="port-navbar-social">
-      <Email email="info@dumezthomas.dev" subject="More information about your work">
+      <Email email="contact@dumezthomas.dev" subject="Information">
         <FontAwesomeIcon icon={faEnvelope} className="port-navbar-link" />
       </Email>
       <a href="https://github.com/dumezthomas" target="_blank">

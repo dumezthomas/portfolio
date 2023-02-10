@@ -60,10 +60,7 @@ const Home = () => {
                         Web Developer
                       </h2>
                       <div className="hero-section-contact">
-                        <Email
-                          email="info@dumezthomas.dev"
-                          subject="More information about your work"
-                        >
+                        <Email email="contact@dumezthomas.dev" subject="Information">
                           <Button color="contact" className="hero-section-contact">
                             <FontAwesomeIcon icon={faEnvelope} className="me-2" />
                             Contact Me
