@@ -15,7 +15,10 @@ const Resume = () => {
       <BasePage title="Resume | Thomas Dumez">
         <Row>
           <Col md={{ size: 8, offset: 2 }}>
-            <iframe style={{ width: "100%", height: "800px" }} src="/files/td_resume.pdf" />
+            <iframe
+              style={{ width: "100%", height: "800px" }}
+              src="/files/Thomas_Dumez_Resume.pdf"
+            />
           </Col>
         </Row>
       </BasePage>
