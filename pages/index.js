@@ -2,6 +2,7 @@ import React from "react";
 import { Email } from "react-obfuscate-email";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
+import SkillApi from "lib/api/skill";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
@@ -11,33 +12,7 @@ import BasePage from "components/BasePage";
 import Typed from "components/shared/Typed";
 import { Container, Row, Col, Button } from "reactstrap";
 
-const TypedText = () => {
-  const roles = [
-    "Developer",
-    "React JS",
-    "MongoDB",
-    "Node JS",
-    "JavaScript",
-    "Next JS",
-    "Full Stack",
-  ];
-
-  return (
-    <Typed
-      loop
-      typeSpeed={70}
-      backSpeed={70}
-      backDelay={1000}
-      loopCount={0}
-      showCursor
-      cursorChar="|"
-      strings={roles}
-      className="self-typed"
-    />
-  );
-};
-
-const Home = () => {
+const Home = ({ skills }) => {
   const { user, isLoading: userLoading } = useUser();
 
   return (
@@ -77,14 +52,26 @@ const Home = () => {
 
               <Col md="6" className="hero-welcome-wrapper">
                 <div className="hero-welcome-text">
-                  <h1>
-                    Welcome to my portfolio. Get informed, collaborate and discover projects I was
-                    working on through the years!
-                  </h1>
-                </div>
-                <TypedText />
-                <div className="hero-welcome-bio">
-                  <h1>Let's take a look on my work.</h1>
+                  <p>
+                    <b>Welcome to my portfolio!</b>
+                  </p>
+                  <p>I have a passion for creating innovative and dynamic web applications.</p>
+                  <p>
+                    <b>
+                      <Typed
+                        loop
+                        typeSpeed={70}
+                        backSpeed={70}
+                        backDelay={1000}
+                        loopCount={0}
+                        showCursor
+                        cursorChar="|"
+                        strings={skills}
+                        className="self-typed"
+                      />
+                    </b>
+                  </p>
+                  <p>Take a look at my projects.</p>
                 </div>
               </Col>
             </Row>
@@ -93,6 +80,26 @@ const Home = () => {
       </BasePage>
     </BaseLayout>
   );
+};
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array;
+};
+
+export const getStaticProps = async () => {
+  const json = await new SkillApi().getAll();
+  const skillsSorted = json.data.filter((skill) => skill.showcase).map((skill) => skill.name);
+  const skills = shuffleArray(skillsSorted);
+
+  return {
+    props: { skills },
+    revalidate: 60,
+  };
 };
 
 export default Home;
