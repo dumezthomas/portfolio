@@ -5,25 +5,18 @@ import SkillApi from "lib/api/skill";
 
 import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/BasePage";
+import SkillBadge from "components/shared/SkillBadge";
 import { Row, Col } from "reactstrap";
 
 const About = ({ skillsByCategorie }) => {
   const { user, isLoading: userLoading } = useUser();
+  const bgColor = "DDDDDD";
+  const style = "flat";
 
-  const skillBadge = (skill) => {
-    const baseUrl = "https://img.shields.io/badge/";
-    const bgColor = "DDDDDD";
-    const style = "flat";
-
-    return (
-      <img
-        src={`${baseUrl}-${skill.name}-${bgColor}?style=${style}${
-          skill.logo && skill.logoColor ? `&logo=${skill.logo}&logoColor=${skill.logoColor}` : ""
-        }`}
-        className="me-1"
-      />
-    );
-  };
+  const mapSkills = (skills) =>
+    skills.map((skill) => (
+      <SkillBadge key={skill._id} skill={skill} bgColor={bgColor} style={style} />
+    ));
 
   return (
     <BaseLayout user={user} userLoading={userLoading}>
@@ -51,13 +44,13 @@ const About = ({ skillsByCategorie }) => {
           <Col md="6">
             <div>
               <h1 className="title">Technical skills</h1>
-              <p>{skillsByCategorie.programmingLanguage.map((skill) => skillBadge(skill))}</p>
-              <p>{skillsByCategorie.web.map((skill) => skillBadge(skill))}</p>
-              <p>{skillsByCategorie.webFramework.map((skill) => skillBadge(skill))}</p>
-              <p>{skillsByCategorie.database.map((skill) => skillBadge(skill))}</p>
-              <p>{skillsByCategorie.tool.map((skill) => skillBadge(skill))}</p>
-              <p>{skillsByCategorie.software.map((skill) => skillBadge(skill))}</p>
-              <p>{skillsByCategorie.system.map((skill) => skillBadge(skill))}</p>
+              <p>{mapSkills(skillsByCategorie.programmingLanguage)}</p>
+              <p>{mapSkills(skillsByCategorie.web)}</p>
+              <p>{mapSkills(skillsByCategorie.webFramework)}</p>
+              <p>{mapSkills(skillsByCategorie.database)}</p>
+              <p>{mapSkills(skillsByCategorie.tool)}</p>
+              <p>{mapSkills(skillsByCategorie.software)}</p>
+              <p>{mapSkills(skillsByCategorie.system)}</p>
             </div>
           </Col>
         </Row>

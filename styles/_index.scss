@@ -81,17 +81,27 @@
   }
 }
 
+.hero-welcome-wrapper {
+  justify-content: flex-end;
+  z-index: 1;
+}
+
 .hero-welcome-text {
   color: $text-color-light;
   text-transform: uppercase;
   font-size: 27px;
   font-weight: 300;
   margin-top: 80px;
-}
 
-.hero-welcome-wrapper {
-  justify-content: flex-end;
-  z-index: 1;
+  &-title {
+    font-weight: bold;
+  }
+
+  &-self-typed {
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
 }
 
 @media (max-width: 991px) {
@@ -142,9 +152,4 @@
     height: 100%;
     box-shadow: -17px 13px 13px $box-shadow-in;
   }
-}
-
-.self-typed {
-  letter-spacing: 2px;
-  font-weight: bold;
 }

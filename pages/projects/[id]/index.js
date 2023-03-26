@@ -26,7 +26,7 @@ const ProjectDetail = ({ project }) => {
                 <h1 className="cover-heading">Your page is getting created.</h1>
               ) : (
                 <>
-                  <p className="lead info mb-0">{project.technologies}</p>
+                  {/* <p className="lead info mb-0">{project.technologies}</p> */}
                   <h1 className="cover-heading">{project.project}</h1>
                   <p className="lead dates">{project.client}</p>
                   <p className="lead">{project.description}</p>
@@ -41,7 +41,11 @@ const ProjectDetail = ({ project }) => {
                       </a>
                     )}
                     {project.github && (
-                      <a href={project.github} target="_blank" className="btn btn-lg btn-secondary">
+                      <a
+                        href={`https://github.com/${project.github}`}
+                        target="_blank"
+                        className="btn btn-lg btn-secondary"
+                      >
                         Code
                       </a>
                     )}

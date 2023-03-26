@@ -9,7 +9,7 @@ import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import NavBarBrand from "components/shared/header/NavBarBrand";
 import ActiveNavLinkItem from "components/shared/header/ActiveNavLinkItem";
 import NavAnchorItem from "components/shared/header/NavAnchorItem";
-import ProjectsMenu from "components/shared/header/ProjectsMenu";
+import AdminMenu from "components/shared/header/AdminMenu";
 import SocialMenu from "components/shared/header/SocialMenu";
 import { Collapse, Navbar, NavbarToggler, Nav } from "reactstrap";
 
@@ -34,11 +34,17 @@ const Header = ({ navBarBg, user, userLoading }) => {
               <ActiveNavLinkItem href="/" value="Home" />
               <ActiveNavLinkItem href="/about" value="About" />
               {!userLoading && isAuthorized(user, "admin") ? (
-                <ProjectsMenu />
+                <>
+                  <ActiveNavLinkItem href="/resume" value="Resume" />
+                  <AdminMenu />
+                </>
               ) : (
-                <ActiveNavLinkItem href="/projects" value="Projects" />
+                <>
+                  <ActiveNavLinkItem href="/projects" value="Projects" />
+                  <ActiveNavLinkItem href="/resume" value="Resume" />
+                </>
               )}
-              <ActiveNavLinkItem href="/resume" value="Resume" />
+
               {!userLoading && user && (
                 <NavAnchorItem
                   href="/api/auth/logout"

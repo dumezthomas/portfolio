@@ -6,6 +6,9 @@ import { useDeleteProject } from "actions/project";
 import ProjectApi from "lib/api/project";
 import isAuthorized from "utils/isAuthorized";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdd, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import BaseLayout from "components/layouts/BaseLayout";
 import BasePage from "components/BasePage";
 import ProjectCard from "components/ProjectCard";
@@ -21,14 +24,19 @@ const Projects = ({ projects: initialProjects }) => {
     router.push(`/projects/[id]`, `/projects/${projectId}`);
   };
 
+  const onClickAddHandler = (event) => {
+    event.stopPropagation();
+    router.push(`/projects/new`, `/projects/new`);
+  };
+
   const onClickEditHandler = (event, projectId) => {
     event.stopPropagation();
     router.push(`/projects/[id]/edit`, `/projects/${projectId}/edit`);
   };
 
-  const onClickDeleteHandler = async (event, projectId) => {
+  const onClickDeleteHandler = async (event, projectId, projectName) => {
     event.stopPropagation();
-    const isConfirm = confirm("Are you sure you want to delete this project?");
+    const isConfirm = confirm(`Are you sure you want to delete "${projectName}"?`);
     if (isConfirm) {
       try {
         await deleteProject(projectId);
@@ -39,7 +47,21 @@ const Projects = ({ projects: initialProjects }) => {
 
   return (
     <BaseLayout user={user} userLoading={userLoading}>
-      <BasePage header="Projects" className="projects-page" title="Projects | Thomas Dumez">
+      <BasePage className="projects-page" title="Projects | Thomas Dumez">
+        <Row>
+          <Col>
+            <h1 className="project-title">Projects</h1>
+          </Col>
+          <Col>
+            {isAuthorized(user, "admin") && (
+              <div className="project-add-button">
+                <Button onClick={(event) => onClickAddHandler(event)} color="success" size="lg">
+                  <FontAwesomeIcon icon={faAdd} />
+                </Button>
+              </div>
+            )}
+          </Col>
+        </Row>
         <Row>
           {errorDeleteProject && <div className="alert alert-danger">{errorDeleteProject}</div>}
           {projects.map((project) => (
@@ -50,15 +72,15 @@ const Projects = ({ projects: initialProjects }) => {
                     <Button
                       onClick={(event) => onClickEditHandler(event, project._id)}
                       className="me-2"
-                      color="warning"
+                      color="dark"
                     >
-                      Edit
+                      <FontAwesomeIcon icon={faEdit} />
                     </Button>
                     <Button
-                      onClick={(event) => onClickDeleteHandler(event, project._id)}
+                      onClick={(event) => onClickDeleteHandler(event, project._id, project.project)}
                       color="danger"
                     >
-                      Delete
+                      <FontAwesomeIcon icon={faTrash} />
                     </Button>
                   </>
                 )}

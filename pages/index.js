@@ -52,25 +52,19 @@ const Home = ({ skills }) => {
 
               <Col md="6" className="hero-welcome-wrapper">
                 <div className="hero-welcome-text">
-                  <p>
-                    <b>Welcome to my portfolio!</b>
-                  </p>
+                  <p className="hero-welcome-text-title">Welcome to my portfolio!</p>
                   <p>I have a passion for creating innovative and dynamic web applications.</p>
-                  <p>
-                    <b>
-                      <Typed
-                        loop
-                        typeSpeed={70}
-                        backSpeed={70}
-                        backDelay={1000}
-                        loopCount={0}
-                        showCursor
-                        cursorChar="|"
-                        strings={skills}
-                        className="self-typed"
-                      />
-                    </b>
-                  </p>
+                  <Typed
+                    loop
+                    typeSpeed={70}
+                    backSpeed={70}
+                    backDelay={1000}
+                    loopCount={0}
+                    showCursor
+                    cursorChar="|"
+                    strings={skills}
+                    className="hero-welcome-text-self-typed"
+                  />
                   <p>Take a look at my projects.</p>
                 </div>
               </Col>
